@@ -54,10 +54,22 @@ public class ListViewActivity extends AppCompatActivity {
 
         @Override
         public View getView(int i, View view, ViewGroup viewGroup) {
-            view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_text, viewGroup, false);
-            TextView textView = view.findViewById(R.id.textView);
-            textView.setText(items[i]);
+            ViewHolder viewHolder;
+            if (view == null) {
+                viewHolder = new ViewHolder();
+                view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_text, viewGroup, false);
+                viewHolder.textView = view.findViewById(R.id.textView);
+                view.setTag(viewHolder);
+            } else {
+                viewHolder = (ViewHolder) view.getTag();
+            }
+
+            viewHolder.textView.setText(items[i]);
             return view;
         }
+    }
+
+    class ViewHolder {
+        TextView textView;
     }
 }

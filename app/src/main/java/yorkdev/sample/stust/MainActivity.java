@@ -19,6 +19,7 @@ import java.util.List;
 import yorkdev.sample.stust.day2.AnrActivity;
 import yorkdev.sample.stust.day2.HttpUrlConnectionActivity;
 import yorkdev.sample.stust.day2.ListViewActivity;
+import yorkdev.sample.stust.day2.RecyclerViewActivity;
 import yorkdev.sample.stust.day2.RetrofitActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
         String[] options = {
                 "List View",
+                "RecyclerView",
                 "ANR",
                 "HttpUrlConnection",
                 "Retrofit"
@@ -36,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
         final Class[] classes = {
                 ListViewActivity.class,
+                RecyclerViewActivity.class,
                 AnrActivity.class,
                 HttpUrlConnectionActivity.class,
                 RetrofitActivity.class
