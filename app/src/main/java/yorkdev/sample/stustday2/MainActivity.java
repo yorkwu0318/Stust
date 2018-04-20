@@ -18,6 +18,7 @@ import java.util.List;
 
 import yorkdev.sample.stustday2.day2.AnrActivity;
 import yorkdev.sample.stustday2.day2.HttpUrlConnectionActivity;
+import yorkdev.sample.stustday2.day2.RetrofitActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,12 +28,14 @@ public class MainActivity extends AppCompatActivity {
 
         String[] options = {
                 "ANR",
-                "HttpUrlConnection"
+                "HttpUrlConnection",
+                "Retrofit"
         };
 
         final Class[] classes = {
                 AnrActivity.class,
-                HttpUrlConnectionActivity.class
+                HttpUrlConnectionActivity.class,
+                RetrofitActivity.class
         };
 
         setContentView(R.layout.activity_recycler_view);

@@ -20,6 +20,7 @@
         </activity>
         <activity android:name=".day2.HttpUrlConnectionActivity"/>
         <activity android:name=".day2.AnrActivity" />
+        <activity android:name=".day2.RetrofitActivity" />
     </application>
 
 </manifest>
