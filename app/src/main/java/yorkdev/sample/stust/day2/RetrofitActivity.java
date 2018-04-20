@@ -1,4 +1,4 @@
-package yorkdev.sample.stustday2.day2;
+package yorkdev.sample.stust.day2;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -18,8 +18,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import yorkdev.sample.stustday2.AirQuality;
-import yorkdev.sample.stustday2.R;
+import yorkdev.sample.stust.AirQuality;
+import yorkdev.sample.stust.R;
 
 
 public class RetrofitActivity extends AppCompatActivity {

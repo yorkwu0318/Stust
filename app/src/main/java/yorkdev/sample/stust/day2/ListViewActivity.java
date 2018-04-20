@@ -1,4 +1,4 @@
-package yorkdev.sample.stustday2.day2;
+package yorkdev.sample.stust.day2;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,7 +10,7 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import yorkdev.sample.stustday2.R;
+import yorkdev.sample.stust.R;
 
 
 public class ListViewActivity extends AppCompatActivity {

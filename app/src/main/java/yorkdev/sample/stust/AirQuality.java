@@ -1,4 +1,4 @@
-package yorkdev.sample.stustday2;
+package yorkdev.sample.stust;
 
 
 import com.google.gson.annotations.SerializedName;

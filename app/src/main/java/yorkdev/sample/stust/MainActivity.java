@@ -1,4 +1,4 @@
-package yorkdev.sample.stustday2;
+package yorkdev.sample.stust;
 
 
 import android.content.Intent;
@@ -16,10 +16,10 @@ import android.widget.TextView;
 import java.util.Arrays;
 import java.util.List;
 
-import yorkdev.sample.stustday2.day2.AnrActivity;
-import yorkdev.sample.stustday2.day2.HttpUrlConnectionActivity;
-import yorkdev.sample.stustday2.day2.ListViewActivity;
-import yorkdev.sample.stustday2.day2.RetrofitActivity;
+import yorkdev.sample.stust.day2.AnrActivity;
+import yorkdev.sample.stust.day2.HttpUrlConnectionActivity;
+import yorkdev.sample.stust.day2.ListViewActivity;
+import yorkdev.sample.stust.day2.RetrofitActivity;
 
 public class MainActivity extends AppCompatActivity {
 

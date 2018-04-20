@@ -1,7 +1,5 @@
-package yorkdev.sample.stustday2.day2;
+package yorkdev.sample.stust.day2;
 
-import android.os.Handler;
-import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
@@ -13,9 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 
@@ -24,15 +19,14 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-import yorkdev.sample.stustday2.AirQuality;
-import yorkdev.sample.stustday2.R;
+import yorkdev.sample.stust.AirQuality;
+import yorkdev.sample.stust.R;
 
 public class HttpUrlConnectionActivity extends AppCompatActivity {
 

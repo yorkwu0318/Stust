@@ -1,4 +1,4 @@
-package yorkdev.sample.stustday2.day2;
+package yorkdev.sample.stust.day2;
 
 
 import android.os.Bundle;
@@ -17,7 +17,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import yorkdev.sample.stustday2.R;
+import yorkdev.sample.stust.R;
 
 public class AnrActivity extends AppCompatActivity {
 

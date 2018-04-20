@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="yorkdev.sample.stustday2">
+    package="yorkdev.sample.stust">
 
     <uses-permission android:name="android.permission.INTERNET"/>
 
@@ -11,17 +11,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity" >
+        <activity android:name="yorkdev.sample.stust.MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".day2.HttpUrlConnectionActivity"/>
-        <activity android:name=".day2.AnrActivity" />
-        <activity android:name=".day2.RetrofitActivity" />
-        <activity android:name=".day2.ListViewActivity" />
+        <activity android:name="yorkdev.sample.stust.day2.HttpUrlConnectionActivity"/>
+        <activity android:name="yorkdev.sample.stust.day2.AnrActivity" />
+        <activity android:name="yorkdev.sample.stust.day2.RetrofitActivity" />
+        <activity android:name="yorkdev.sample.stust.day2.ListViewActivity" />
     </application>
 
 </manifest>
