@@ -21,6 +21,7 @@
         <activity android:name=".day2.HttpUrlConnectionActivity"/>
         <activity android:name=".day2.AnrActivity" />
         <activity android:name=".day2.RetrofitActivity" />
+        <activity android:name=".day2.ListViewActivity" />
     </application>
 
 </manifest>
