@@ -3,6 +3,8 @@
     package="yorkdev.sample.stust">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
     <application
         android:allowBackup="true"
@@ -23,6 +25,7 @@
         <activity android:name="yorkdev.sample.stust.day2.RetrofitActivity" />
         <activity android:name="yorkdev.sample.stust.day2.ListViewActivity" />
         <activity android:name=".day2.RecyclerViewActivity" />
+        <activity android:name=".day3.PermissionActivity" />
     </application>
 
 </manifest>

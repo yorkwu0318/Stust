@@ -21,6 +21,7 @@ import yorkdev.sample.stust.day2.HttpUrlConnectionActivity;
 import yorkdev.sample.stust.day2.ListViewActivity;
 import yorkdev.sample.stust.day2.RecyclerViewActivity;
 import yorkdev.sample.stust.day2.RetrofitActivity;
+import yorkdev.sample.stust.day3.PermissionActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,7 +34,8 @@ public class MainActivity extends AppCompatActivity {
                 "RecyclerView",
                 "ANR",
                 "HttpUrlConnection",
-                "Retrofit"
+                "Retrofit",
+                "Official Permission Setting"
         };
 
         final Class[] classes = {
@@ -41,7 +43,8 @@ public class MainActivity extends AppCompatActivity {
                 RecyclerViewActivity.class,
                 AnrActivity.class,
                 HttpUrlConnectionActivity.class,
-                RetrofitActivity.class
+                RetrofitActivity.class,
+                PermissionActivity.class
         };
 
         setContentView(R.layout.activity_recycler_view);
