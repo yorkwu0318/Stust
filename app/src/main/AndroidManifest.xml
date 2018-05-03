@@ -26,6 +26,7 @@
         <activity android:name="yorkdev.sample.stust.day2.ListViewActivity" />
         <activity android:name=".day2.RecyclerViewActivity" />
         <activity android:name=".day3.PermissionActivity" />
+        <activity android:name=".day3.PermissionDispatcherActivity" />
     </application>
 
 </manifest>
