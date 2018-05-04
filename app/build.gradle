@@ -31,6 +31,11 @@ final permissionsdispatcher = '3.2.0'
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
+    //Room
+    implementation "android.arch.persistence.room:runtime:1.0.0"
+    annotationProcessor "android.arch.persistence.room:compiler:1.0.0"
+
+    //PermissionsDispatcher
     implementation("com.github.hotchemi:permissionsdispatcher:${permissionsdispatcher}") {
         // if you don't use android.app.Fragment you can exclude support for them
         exclude module: "support-v13"

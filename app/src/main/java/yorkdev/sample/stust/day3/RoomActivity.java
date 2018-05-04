@@ -3,6 +3,8 @@ package yorkdev.sample.stust.day3;
 import android.Manifest;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -16,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.List;
+import java.util.concurrent.Executors;
 
 import permissions.dispatcher.NeedsPermission;
 import permissions.dispatcher.OnNeverAskAgain;
@@ -31,10 +34,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import yorkdev.sample.stust.AirQuality;
 import yorkdev.sample.stust.R;
 import yorkdev.sample.stust.day2.DataManager;
+import yorkdev.sample.stust.day3.room.MyDatabase;
 import yorkdev.sample.stust.day3.sqlite.MyDbHelper;
 
 @RuntimePermissions
-public class SQLiteActivity extends AppCompatActivity {
+public class RoomActivity extends AppCompatActivity {
     public static final String KEY_AIR_SHARED = "AirQuality";
     public static final String AIR_UPDATE_TIME = "air_update_time";
     private RecyclerView recyclerView;
@@ -46,7 +50,7 @@ public class SQLiteActivity extends AppCompatActivity {
 
         Log.i("111", "onCreate");
 
-        SQLiteActivityPermissionsDispatcher.onLocationAvailableWithPermissionCheck(this);
+        RoomActivityPermissionsDispatcher.onLocationAvailableWithPermissionCheck(this);
 
         setContentView(R.layout.activity_recycler_view);
 
@@ -78,10 +82,12 @@ public class SQLiteActivity extends AppCompatActivity {
                     }
 
                     recyclerView.setAdapter(new MyAdapter(list));
-                    // db 不能在 main thread
-                    MyDbHelper myDbHelper = new MyDbHelper(SQLiteActivity.this);
-                    myDbHelper.update(list);
-                    saveUpdateTime(list.get(0).PublishTime);
+//                    MyDbHelper myDbHelper = new MyDbHelper(RoomActivity.this);
+//                    myDbHelper.update(list);
+                    Executors.newSingleThreadExecutor().execute(() -> {
+                        MyDatabase.getInstance(RoomActivity.this).myDao().insertAirQualities(list);
+                        saveUpdateTime(list.get(0).PublishTime);
+                    });
                 }
             }
 
@@ -97,10 +103,15 @@ public class SQLiteActivity extends AppCompatActivity {
     }
 
     private void updateUiFromDb() {
-        // db 不能在 main thread
-        MyDbHelper myDbHelper = new MyDbHelper(this);
-        List<AirQuality> list = myDbHelper.getList();
-        recyclerView.setAdapter(new MyAdapter(list));
+//        MyDbHelper myDbHelper = new MyDbHelper(this);
+//        List<AirQuality> list = myDbHelper.getList();
+        Executors.newSingleThreadExecutor().execute(() -> {
+            List<AirQuality> list = MyDatabase.getInstance(this).myDao().getAll();
+
+            new Handler(Looper.getMainLooper()).post(() -> recyclerView.setAdapter(new MyAdapter(list)));
+        });
+
+
     }
 
     private void saveUpdateTime(String time) {
@@ -144,7 +155,7 @@ public class SQLiteActivity extends AppCompatActivity {
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
-        SQLiteActivityPermissionsDispatcher.onRequestPermissionsResult(this, requestCode, grantResults);
+        RoomActivityPermissionsDispatcher.onRequestPermissionsResult(this, requestCode, grantResults);
     }
 
     class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {

@@ -1,9 +1,16 @@
 package yorkdev.sample.stust;
 
 
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
+
 import com.google.gson.annotations.SerializedName;
 
+@Entity(tableName = "AirQuality")
 public class AirQuality {
+    @PrimaryKey
+    @NonNull
     public String SiteName;
     public String County;
     public String AQI;

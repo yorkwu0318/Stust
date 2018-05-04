@@ -23,6 +23,7 @@ import yorkdev.sample.stust.day2.RecyclerViewActivity;
 import yorkdev.sample.stust.day2.RetrofitActivity;
 import yorkdev.sample.stust.day3.PermissionActivity;
 import yorkdev.sample.stust.day3.PermissionDispatcherActivity;
+import yorkdev.sample.stust.day3.RoomActivity;
 import yorkdev.sample.stust.day3.SQLiteActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -52,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
                 PermissionActivity.class,
                 PermissionDispatcherActivity.class,
                 SQLiteActivity.class,
-                SQLiteActivity.class
+                RoomActivity.class
         };
 
         setContentView(R.layout.activity_recycler_view);
