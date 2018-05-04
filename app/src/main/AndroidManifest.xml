@@ -27,6 +27,7 @@
         <activity android:name=".day2.RecyclerViewActivity" />
         <activity android:name=".day3.PermissionActivity" />
         <activity android:name=".day3.PermissionDispatcherActivity" />
+        <activity android:name=".day3.SQLiteActivity" />
     </application>
 
 </manifest>

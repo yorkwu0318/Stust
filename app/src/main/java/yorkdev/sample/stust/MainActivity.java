@@ -23,6 +23,7 @@ import yorkdev.sample.stust.day2.RecyclerViewActivity;
 import yorkdev.sample.stust.day2.RetrofitActivity;
 import yorkdev.sample.stust.day3.PermissionActivity;
 import yorkdev.sample.stust.day3.PermissionDispatcherActivity;
+import yorkdev.sample.stust.day3.SQLiteActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -37,7 +38,9 @@ public class MainActivity extends AppCompatActivity {
                 "HttpUrlConnection",
                 "Retrofit",
                 "Official Permission Setting",
-                "PermissionDispatcher Setting"
+                "PermissionDispatcher Setting",
+                "SQLite",
+                "Room"
         };
 
         final Class[] classes = {
@@ -47,7 +50,9 @@ public class MainActivity extends AppCompatActivity {
                 HttpUrlConnectionActivity.class,
                 RetrofitActivity.class,
                 PermissionActivity.class,
-                PermissionDispatcherActivity.class
+                PermissionDispatcherActivity.class,
+                SQLiteActivity.class,
+                SQLiteActivity.class
         };
 
         setContentView(R.layout.activity_recycler_view);

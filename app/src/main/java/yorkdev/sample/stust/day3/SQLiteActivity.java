@@ -1,6 +1,7 @@
 package yorkdev.sample.stust.day3;
 
 import android.Manifest;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
@@ -30,19 +31,34 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import yorkdev.sample.stust.AirQuality;
 import yorkdev.sample.stust.R;
 import yorkdev.sample.stust.day2.DataManager;
+import yorkdev.sample.stust.day3.sqlite.MyDbHelper;
 
 @RuntimePermissions
-public class PermissionDispatcherActivity extends AppCompatActivity {
+public class SQLiteActivity extends AppCompatActivity {
+    public static final String KEY_AIR_SHARED = "AirQuality";
+    public static final String AIR_UPDATE_TIME = "air_update_time";
     private RecyclerView recyclerView;
+    private boolean hasUpdateTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Log.i("111", "onCreate");
+
+        SQLiteActivityPermissionsDispatcher.onLocationAvailableWithPermissionCheck(this);
+
         setContentView(R.layout.activity_recycler_view);
 
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
+
+        hasUpdateTime = getUpdateTime() != null;
+        if (hasUpdateTime) {
+            updateUiFromDb();
+            return;
+        }
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://opendata2.epa.gov.tw/")
@@ -56,19 +72,43 @@ public class PermissionDispatcherActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<AirQuality>> call, Response<List<AirQuality>> response) {
                 if (response.isSuccessful()) {
-                    recyclerView.setAdapter(new MyAdapter(response.body()));
+                    List<AirQuality> list = response.body();
+                    if (list == null || list.size() == 0) {
+                        return;
+                    }
+
+                    recyclerView.setAdapter(new MyAdapter(list));
+                    MyDbHelper myDbHelper = new MyDbHelper(SQLiteActivity.this);
+                    myDbHelper.update(list);
+                    saveUpdateTime(list.get(0).PublishTime);
                 }
             }
 
             @Override
             public void onFailure(Call<List<AirQuality>> call, Throwable t) {
                 Log.e("111", t.getMessage());
+                if (hasUpdateTime) {
+                    updateUiFromDb();
+                }
             }
         });
 
-        PermissionDispatcherActivityPermissionsDispatcher.onLocationAvailableWithPermissionCheck(this);
+    }
 
-        Log.i("111", "onCreate");
+    private void updateUiFromDb() {
+        MyDbHelper myDbHelper = new MyDbHelper(this);
+        List<AirQuality> list = myDbHelper.getList();
+        recyclerView.setAdapter(new MyAdapter(list));
+    }
+
+    private void saveUpdateTime(String time) {
+        SharedPreferences sharedPreferences = getSharedPreferences(KEY_AIR_SHARED, MODE_PRIVATE);
+        sharedPreferences.edit().putString(AIR_UPDATE_TIME, time).apply();
+    }
+
+    private String getUpdateTime() {
+        SharedPreferences sharedPreferences = getSharedPreferences(KEY_AIR_SHARED, MODE_PRIVATE);
+        return sharedPreferences.getString(AIR_UPDATE_TIME, null);
     }
 
     @NeedsPermission(Manifest.permission.ACCESS_FINE_LOCATION)
@@ -102,7 +142,7 @@ public class PermissionDispatcherActivity extends AppCompatActivity {
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
-        PermissionDispatcherActivityPermissionsDispatcher.onRequestPermissionsResult(this, requestCode, grantResults);
+        SQLiteActivityPermissionsDispatcher.onRequestPermissionsResult(this, requestCode, grantResults);
     }
 
     class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
