@@ -11,3 +11,10 @@
 - [ANR](https://github.com/yorkwu0318/Stust/blob/master/app/src/main/java/yorkdev/sample/stustday2/day2/AnrActivity.java)
 - [HttpUrlConnection](https://github.com/yorkwu0318/Stust/blob/master/app/src/main/java/yorkdev/sample/stustday2/day2/HttpUrlConnectionActivity.java)
 - [Retrofit](https://github.com/yorkwu0318/Stust/blob/master/app/src/main/java/yorkdev/sample/stustday2/day2/RetrofitActivity.java)
+
+## 2018/05/05 Day3
+- [投影片]
+- [原生Permission](https://github.com/yorkwu0318/Stust/blob/master/app/src/main/java/yorkdev/sample/stust/day3/PermissionActivity.java)
+- [PermissionDispatcher](https://github.com/yorkwu0318/Stust/blob/master/app/src/main/java/yorkdev/sample/stust/day3/PermissionDispatcherActivity.java)
+- [SQLite](https://github.com/yorkwu0318/Stust/blob/master/app/src/main/java/yorkdev/sample/stust/day3/SQLiteActivity.java)
+- [Room](https://github.com/yorkwu0318/Stust/blob/master/app/src/main/java/yorkdev/sample/stust/day3/RoomActivity.java)
