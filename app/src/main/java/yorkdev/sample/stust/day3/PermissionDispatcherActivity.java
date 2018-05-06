@@ -1,6 +1,9 @@
 package yorkdev.sample.stust.day3;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
@@ -12,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -34,6 +38,9 @@ import yorkdev.sample.stust.day2.DataManager;
 @RuntimePermissions
 public class PermissionDispatcherActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
+    private Location currentLocation;
+    private MyAdapter myAdapter;
+    private List<AirQuality> list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +63,10 @@ public class PermissionDispatcherActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<AirQuality>> call, Response<List<AirQuality>> response) {
                 if (response.isSuccessful()) {
-                    recyclerView.setAdapter(new MyAdapter(response.body()));
+                    list = response.body();
+                    myAdapter = new MyAdapter(list);
+                    recyclerView.setAdapter(myAdapter);
+                    findNearbySiteAndUpdateUi();
                 }
             }
 
@@ -71,9 +81,35 @@ public class PermissionDispatcherActivity extends AppCompatActivity {
         Log.i("111", "onCreate");
     }
 
+    @SuppressLint("MissingPermission")
     @NeedsPermission(Manifest.permission.ACCESS_FINE_LOCATION)
     public void onLocationAvailable() {
         Log.i("111", "Location Available");
+        LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+        currentLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        findNearbySiteAndUpdateUi();
+    }
+
+    private void findNearbySiteAndUpdateUi() {
+        if (currentLocation != null && list != null) {
+
+            float miniDistance = -1f;
+            AirQuality nearByAirQuality = null;
+
+            for (AirQuality airQuality : list) {
+                Location location = new Location("AirQuality");
+                location.setLongitude(Double.parseDouble(airQuality.Longitude));
+                location.setLatitude(Double.parseDouble(airQuality.Latitude));
+
+                float distance = currentLocation.distanceTo(location);
+                if (distance < miniDistance || miniDistance == -1) {
+                    miniDistance = distance;
+                    nearByAirQuality = airQuality;
+                }
+            }
+
+            myAdapter.setNearbyAirQuality(nearByAirQuality);
+        }
     }
 
     @OnShowRationale(Manifest.permission.ACCESS_FINE_LOCATION)
@@ -108,6 +144,7 @@ public class PermissionDispatcherActivity extends AppCompatActivity {
     class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
         List<AirQuality> list;
+        AirQuality airQuality;
 
         public MyAdapter(List<AirQuality> list) {
             this.list = list;
@@ -115,7 +152,7 @@ public class PermissionDispatcherActivity extends AppCompatActivity {
 
         @Override
         public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_air_quality, parent, false);
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_air_quality_with_location, parent, false);
             return new MyViewHolder(view);
         }
 
@@ -123,6 +160,7 @@ public class PermissionDispatcherActivity extends AppCompatActivity {
         public void onBindViewHolder(MyViewHolder holder, int position) {
             holder.textCity.setText(list.get(position).SiteName);
             holder.textAqi.setText(list.get(position).AQI);
+            holder.imageView.setVisibility(list.get(position) == airQuality ? View.VISIBLE : View.INVISIBLE);
         }
 
         @Override
@@ -130,16 +168,26 @@ public class PermissionDispatcherActivity extends AppCompatActivity {
             return list.size();
         }
 
+        public void setNearbyAirQuality(AirQuality airQuality) {
+            int index = list.indexOf(airQuality);
+            list.remove(airQuality);
+            list.add(0, airQuality);
+            notifyItemMoved(index, 0);
+            this.airQuality = airQuality;
+        }
+
         class MyViewHolder extends RecyclerView.ViewHolder {
 
             TextView textCity;
             TextView textAqi;
+            ImageView imageView;
 
             public MyViewHolder(View itemView) {
                 super(itemView);
 
                 textCity = itemView.findViewById(R.id.textCity);
                 textAqi = itemView.findViewById(R.id.aqi);
+                imageView = itemView.findViewById(R.id.image);
             }
         }
     }
