@@ -20,8 +20,8 @@ import yorkdev.sample.stust.AirQuality;
 import yorkdev.sample.stust.MyApp;
 
 public class RepositoryImpl implements Repository {
-    public static final String KEY_AIR_SHARED = "AirQuality";
-    public static final String AIR_UPDATE_TIME = "air_update_time";
+    private static final String KEY_AIR_SHARED = "AirQuality";
+    private static final String AIR_UPDATE_TIME = "air_update_time";
 
     @Override
     public void getAirQualityList(Callback<List<AirQuality>> callback) {
@@ -39,6 +39,10 @@ public class RepositoryImpl implements Repository {
 
                     List<AirQuality> list = response.body();
                     callback.onSuccess(list);
+
+                    if (list == null || list.size() == 0) {
+                        return;
+                    }
 
                     Executors.newSingleThreadExecutor().execute(() -> {
                         LocalDataSource.generate().insertAirQualities(list);

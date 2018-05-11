@@ -21,10 +21,6 @@ public class MvpPresenter {
         repository.getAirQualityList(new Repository.Callback<List<AirQuality>>() {
             @Override
             public void onSuccess(List<AirQuality> list) {
-                if (list == null || list.size() == 0) {
-                    return;
-                }
-
                 view.updateList(list);
             }
 
