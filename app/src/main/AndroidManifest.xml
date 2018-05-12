@@ -31,6 +31,7 @@
         <activity android:name=".day3.SQLiteActivity" />
         <activity android:name=".day3.RoomActivity" />
         <activity android:name=".day4.MvpActivity" />
+        <activity android:name=".day4.MvvmActivity" />
     </application>
 
 </manifest>

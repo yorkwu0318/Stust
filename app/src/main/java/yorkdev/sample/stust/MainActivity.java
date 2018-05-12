@@ -26,6 +26,7 @@ import yorkdev.sample.stust.day3.PermissionDispatcherActivity;
 import yorkdev.sample.stust.day3.RoomActivity;
 import yorkdev.sample.stust.day3.SQLiteActivity;
 import yorkdev.sample.stust.day4.MvpActivity;
+import yorkdev.sample.stust.day4.MvvmActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -43,7 +44,8 @@ public class MainActivity extends AppCompatActivity {
                 "PermissionDispatcher Setting",
                 "SQLite",
                 "Room",
-                "MVP"
+                "MVP",
+                "Mvvm"
         };
 
         final Class[] classes = {
@@ -56,7 +58,8 @@ public class MainActivity extends AppCompatActivity {
                 PermissionDispatcherActivity.class,
                 SQLiteActivity.class,
                 RoomActivity.class,
-                MvpActivity.class
+                MvpActivity.class,
+                MvvmActivity.class
         };
 
         setContentView(R.layout.activity_recycler_view);
