@@ -27,6 +27,11 @@ import yorkdev.sample.stust.day3.RoomActivity;
 import yorkdev.sample.stust.day3.SQLiteActivity;
 import yorkdev.sample.stust.day4.MvpActivity;
 import yorkdev.sample.stust.day4.MvvmActivity;
+import yorkdev.sample.stust.day5.MyActionBarActivity;
+import yorkdev.sample.stust.day5.OpenFileActivity;
+import yorkdev.sample.stust.day5.PickersActivity;
+import yorkdev.sample.stust.day5.SharedPreferenceActivity;
+import yorkdev.sample.stust.day5.stack.ActivityA;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -45,7 +50,12 @@ public class MainActivity extends AppCompatActivity {
                 "SQLite",
                 "Room",
                 "MVP",
-                "Mvvm"
+                "Mvvm",
+                "Action Bar",
+                "ActivityStack",
+                "Pickers",
+                "SharedActivity",
+                "Open File"
         };
 
         final Class[] classes = {
@@ -59,7 +69,12 @@ public class MainActivity extends AppCompatActivity {
                 SQLiteActivity.class,
                 RoomActivity.class,
                 MvpActivity.class,
-                MvvmActivity.class
+                MvvmActivity.class,
+                MyActionBarActivity.class,
+                ActivityA.class,
+                PickersActivity.class,
+                SharedPreferenceActivity.class,
+                OpenFileActivity.class
         };
 
         setContentView(R.layout.activity_recycler_view);

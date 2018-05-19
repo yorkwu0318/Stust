@@ -32,6 +32,15 @@
         <activity android:name=".day3.RoomActivity" />
         <activity android:name=".day4.MvpActivity" />
         <activity android:name=".day4.MvvmActivity" />
+        <activity android:name=".day5.MyActionBarActivity" />
+        <activity android:name=".day5.InstanceStateActivity" />
+        <activity android:name=".day5.PickersActivity" />
+        <activity android:name=".day5.SharedPreferenceActivity" />
+        <activity android:name=".day5.OpenFileActivity" />
+        <activity android:name=".day5.stack.ResultActivity" />
+        <activity android:name=".day5.stack.ActivityA" />
+        <activity android:name=".day5.stack.ActivityB" />
+        <activity android:name=".day5.stack.ActivityC" />
     </application>
 
 </manifest>
