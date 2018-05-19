@@ -31,3 +31,8 @@ ANR問題的範例(會當掉)
 - [投影片](https://docs.google.com/presentation/d/1665iZrmiSxP-dcyBeZeNdYcUMj3Ov96OQzN5mDyn6jw/edit?usp=sharing)
 - [MvpActivity](https://github.com/yorkwu0318/Stust/blob/master/app/src/main/java/yorkdev/sample/stust/day4/MvpActivity.java)
 MVP架構
+- [DataBinding](https://github.com/yorkwu0318/Stust/blob/master/app/src/main/java/yorkdev/sample/stust/day4/MvvmActivity.java)
+- [unit Test](https://github.com/yorkwu0318/Stust/blob/master/app/src/test/java/yorkdev/sample/stust/day4/MvpPresenterTest.java)
+
+## 2018/05/19 Day5
+- [投影片](https://docs.google.com/presentation/d/1FW3K4u_IXHNZebrAnW5j2ufQEZ6VNe26ibveSNSteQE/edit?usp=sharing)
