@@ -131,6 +131,12 @@ public class AirQualityWidgetProvider extends AppWidgetProvider {
     @Override
     public void onAppWidgetOptionsChanged(Context context, AppWidgetManager appWidgetManager, int appWidgetId, Bundle newOptions) {
         Log.i("111", "onAppWidgetOptionsChanged");
+
+        RemoteViews remoteViews = RemoteViewsBuilderFactory.create(newOptions)
+                .setAirQuality(getCurrentAirQuality(context))
+                .create();
+
+        appWidgetManager.updateAppWidget(appWidgetId, remoteViews);
     }
 
     @Override
