@@ -55,7 +55,8 @@ public class MainActivity extends AppCompatActivity {
                 "ActivityStack",
                 "Pickers",
                 "SharedActivity",
-                "Open File"
+                "Open File",
+                "Day 6 PermissionDispatcher"
         };
 
         final Class[] classes = {
@@ -74,7 +75,8 @@ public class MainActivity extends AppCompatActivity {
                 ActivityA.class,
                 PickersActivity.class,
                 SharedPreferenceActivity.class,
-                OpenFileActivity.class
+                OpenFileActivity.class,
+                yorkdev.sample.stust.day6.PermissionDispatcherActivity.class
         };
 
         setContentView(R.layout.activity_recycler_view);

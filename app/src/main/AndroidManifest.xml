@@ -42,6 +42,7 @@
         <activity android:name=".day5.stack.ActivityB" />
         <activity android:name=".day5.stack.ActivityC" />
         <activity android:name=".day6.MyWidgetConfigActivity" />
+        <activity android:name=".day6.PermissionDispatcherActivity" />
 
         <receiver android:name=".day6.AirQualityWidgetProvider" >
             <intent-filter>
