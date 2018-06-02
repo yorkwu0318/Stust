@@ -6,4 +6,6 @@
     android:previewImage="@drawable/ic_location_on_black_24dp"
     android:initialLayout="@layout/my_widget"
     android:resizeMode="horizontal|vertical"
-    android:widgetCategory="home_screen"/>
+    android:widgetCategory="home_screen"
+    android:configure="yorkdev.sample.stust.day6.MyWidgetConfigActivity"
+    />
