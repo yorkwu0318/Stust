@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 
-public class SmallWidgetProvider extends AppWidgetProvider {
+public class AirQualityWidgetProvider extends AppWidgetProvider {
 
     @Override
     public void onReceive(Context context, Intent intent) {
