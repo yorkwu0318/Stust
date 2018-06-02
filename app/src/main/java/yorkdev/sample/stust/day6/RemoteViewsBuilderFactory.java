@@ -25,11 +25,7 @@ public class RemoteViewsBuilderFactory {
 
         Log.i("111", "rows="+rows+" columns="+columns);
 
-        if (columns > 2) {
-            return new RichRemoteViewsBuilder();
-        } else {
-            return new SimpleRemoteViewsBuilder();
-        }
+        return null;
     }
 
     private static int getCellsForSize(int size) {
