@@ -36,3 +36,7 @@ MVP架構
 
 ## 2018/05/19 Day5
 - [投影片](https://docs.google.com/presentation/d/1FW3K4u_IXHNZebrAnW5j2ufQEZ6VNe26ibveSNSteQE/edit?usp=sharing)
+
+## 2018/06/02 Day6
+- [投影片](https://docs.google.com/presentation/d/1HJZPvnHH32T_hy-pojm2gPjXFfeSwrGUdLnRMPJBLXI/edit?usp=sharing)
+- [Widget](https://github.com/yorkwu0318/Stust/blob/master/app/src/main/java/yorkdev/sample/stust/day6/AirQualityWidgetProvider.java)
