@@ -2,6 +2,8 @@
 ## open data
 - [環保署最新空污資訊](https://opendata.epa.gov.tw/Data/Contents/AQI/)
 - 南台經緯度位置: 23.0242978, 120.2224114
+- [Chrome小工具 JsonView](https://chrome.google.com/webstore/detail/jsonview/chklaanhfefbnpoihckbnefhakgolnmc?hl=zh-TW)
+- [Chrome小工具 Octotree](https://chrome.google.com/webstore/detail/octotree/bkhaagjahfmjljalopjnoealnfndnagc?hl=zh-TW)
 
 ## 2018/4/14 Day1
 - [投影片](https://docs.google.com/presentation/d/1FqnGfSz4iF08ftewyOLZYiMQ8PWu5M5FY8q4jkWosbo/edit?usp=sharing)
