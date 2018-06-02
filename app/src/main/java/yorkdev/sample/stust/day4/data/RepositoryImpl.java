@@ -7,6 +7,8 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 
+import com.google.gson.Gson;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -22,6 +24,7 @@ import yorkdev.sample.stust.MyApp;
 public class RepositoryImpl implements Repository {
     private static final String KEY_AIR_SHARED = "AirQuality";
     private static final String AIR_UPDATE_TIME = "air_update_time";
+    private static final String MAIN_AIR = "main_air";
 
     @Override
     public void getAirQualityList(Callback<List<AirQuality>> callback) {
@@ -65,6 +68,26 @@ public class RepositoryImpl implements Repository {
                 }
             }
         });
+    }
+
+    @Override
+    public void saveMainAirQuality(AirQuality airQuality) {
+        String text = new Gson().toJson(airQuality);
+
+        SharedPreferences sharedPreferences = MyApp.getAppContext().getSharedPreferences(KEY_AIR_SHARED, Context.MODE_PRIVATE);
+        sharedPreferences.edit().putString(MAIN_AIR, text).apply();
+    }
+
+    @Override
+    public AirQuality getMainAirQuality() {
+        SharedPreferences sharedPreferences = MyApp.getAppContext().getSharedPreferences(KEY_AIR_SHARED, Context.MODE_PRIVATE);
+        String text = sharedPreferences.getString(MAIN_AIR, null);
+
+        if (text != null) {
+            return new Gson().fromJson(text, AirQuality.class);
+        }
+
+        return null;
     }
 
     private boolean hasDataInDb() {

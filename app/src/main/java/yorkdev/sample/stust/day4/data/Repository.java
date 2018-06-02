@@ -13,6 +13,8 @@ public interface Repository {
     }
 
     void getAirQualityList(Callback<List<AirQuality>> callback);
+    void saveMainAirQuality(AirQuality airQuality);
+    AirQuality getMainAirQuality();
     void saveUpdateTime(String updateTime);
     String getUpdateTime();
 }
