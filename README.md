@@ -42,3 +42,4 @@ MVP架構
 ## 2018/06/02 Day6
 - [投影片](https://docs.google.com/presentation/d/1HJZPvnHH32T_hy-pojm2gPjXFfeSwrGUdLnRMPJBLXI/edit?usp=sharing)
 - [Widget](https://github.com/yorkwu0318/Stust/blob/master/app/src/main/java/yorkdev/sample/stust/day6/AirQualityWidgetProvider.java)
+- [最近的位置 broadcast to Widget](https://github.com/yorkwu0318/Stust/blob/master/app/src/main/java/yorkdev/sample/stust/day6/PermissionDispatcherActivity.java)
